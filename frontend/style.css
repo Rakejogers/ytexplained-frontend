@@ -1,0 +1,96 @@
+body {
+    font-family: 'Comfortaa', sans-serif;
+    background-color: #383838;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 100px;
+    text-align: center;
+    color: #000;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.title span {
+    color: #915351;
+    font-size: 100px;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    width: 600px;
+    height: 30px;
+    font-size: 16px;
+}
+
+/* when input field is hoverd make it have a shadow like buttom */
+.input-field:hover {
+    box-shadow: 0 0 10px #915351;
+    width: 620px;
+    transition: .2s ease-in;
+}
+
+/* when user clicks to type in input field make the box shadow stay */
+.input-field:focus {
+    box-shadow: 0 0 10px #915351;
+    width: 620px;
+    transition: .2s ease-in;
+}
+
+.button {
+    background-color: #915351;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 15px;
+    font-family: 'Comfortaa', sans-serif;
+    box-shadow: 0 0 10px #915351;
+    /* position button in middle of input field */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 80px;
+}
+
+.button:hover {
+    background-color: #915351;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 15px;
+    font-family: 'Comfortaa', sans-serif;
+    /* when the button is hoverd make a shadow appear */
+    box-shadow: 0 0 20px #915351;
+    width: 220px;
+    height: 50px;
+    transition: .2s ease-in-out;
+    font-size: 20px;
+}
