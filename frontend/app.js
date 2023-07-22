@@ -3,6 +3,19 @@ async function fetch_explanation(){
     var button = document.getElementById("explain-button");
     progress.style.display = "block";
     button.style.display = "none";
+    
+    var width = 1;
+    var id = setInterval(frame, 35);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+            
+        } else {
+            width++;
+            progress.value = width;
+        }
+    }
+    
 
     // get the youtube id from the input field
     let url = document.getElementById("link_input").value
@@ -15,37 +28,54 @@ async function fetch_explanation(){
 
     console.log(yt_id)
 
-    
-    
-    // // make the progress bar increase while fetching the data
-    var width = 1;
-    var id = setInterval(frame, 20);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++;
-            progress.value = width;
+    try {
+        const response = await fetch('http://127.0.0.1:8000/ytexplainer?yt_id=' + yt_id);
+
+        console.log('status code: ', response.status); // 👉️ 200
+
+        if (!response.ok, !response.status == 404) {
+            console.log(response);
+            throw new Error(`Error! status: ${response.status}`);
         }
+
+        if (response.status == 404){
+            document.getElementById("explain-text").innerHTML = "Invalid Link or video does not have transcript!"
+        } else {
+            const data = await response.json();
+            console.log(data.message)
+            document.getElementById("explain-text").innerHTML = data.message
+        }
+    } catch (err) {
+        console.log(err);
     }
-    setTimeout(()=>clearInterval(id),5000);//stop increasing after certain time
+    
+    
 
-    const requrl = 'http://127.0.0.1:8000/ytexplainer?yt_id=' + yt_id
-    //using fetch get the explanation from teh server with requrl
-    fetch(requrl)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message)
-        document.getElementById("explain-text").innerHTML = data.message
-        document.getElementById("explain").style.display = "block"
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
+    // const requrl = 'http://127.0.0.1:8000/ytexplainer?yt_id=' + yt_id
+    // //using fetch get the explanation from teh server with requrl
+    // fetch(requrl)
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data.message)
+    //     document.getElementById("explain-text").innerHTML = data.message
+    //     // document.getElementById("explain").style.display = "block"
+    // })
+    // .catch(error => {
+    //     console.log(error)
+    // })
+    
+    //make the progress bar increase before displaying the explanation
+    
+    document.getElementById("explain").style.display = "block"
+    document.getElementById("home-button").style.display = "block"
     progress.style.display = "none";
-    // document.getElementById("explain").style.display = "block"
 }
+
+function refreshPage() {
+    window.location.reload();
+} 
 
 // add event listener for the button
 document.getElementById("explain-button").addEventListener("click", fetch_explanation);
+document.getElementById("home-button").addEventListener("click", refreshPage);
+
