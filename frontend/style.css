@@ -68,7 +68,6 @@ body {
     border-radius: 15px;
     font-family: 'Comfortaa', sans-serif;
     box-shadow: 0 0 10px #915351;
-    /* position button in middle of input field */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -93,4 +92,44 @@ body {
     height: 50px;
     transition: .2s ease-in-out;
     font-size: 20px;
+}
+
+progress {
+    width: 400px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 75px;
+    transform: translate(-50%, -50%);
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 15px;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 15px;
+    background-color: #915351;
+    box-shadow: 0 0 20px #915351;
+}
+
+.explanation {
+    width: 1000px;
+    height: 500px;
+    position: absolute;
+    padding: 10px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: #915351;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #915351;
+    background-color: #000000;
+    font-size: 16px;
+    display: none;
 }
