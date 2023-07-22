@@ -32,15 +32,15 @@ async function fetch_explanation(){
         const response = await fetch('http://127.0.0.1:8000/ytexplainer?yt_id=' + yt_id);
 
         console.log('status code: ', response.status); // 👉️ 200
-
+        
         if (!response.ok, !response.status == 404) {
             console.log(response);
             throw new Error(`Error! status: ${response.status}`);
-        }
-
-        if (response.status == 404){
+        } else if(response.status == 404){
             document.getElementById("explain-text").innerHTML = "Invalid Link or video does not have transcript!"
-        } else {
+        } else if(response.status == 409){
+            document.getElementById("explain-text").innerHTML = "Video is too long! Try a shorter video."
+        }else{
             const data = await response.json();
             console.log(data.message)
             document.getElementById("explain-text").innerHTML = data.message
