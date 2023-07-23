@@ -30,7 +30,7 @@ async function fetch_explanation(){
     
 
     try {
-        const options = {method: 'GET', headers: {'Content-Type': 'application/json'}, body: 'false'};
+        const options = {method: 'GET', headers: {'Content-Type': 'application/json'}};
         const response = await fetch('https://ytexplainer-1-v7805525.deta.app/ytexplainer?yt_id=' + yt_id, options);
 
         console.log('status code: ', response.status); // 👉️ 200
