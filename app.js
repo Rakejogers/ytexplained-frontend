@@ -29,7 +29,7 @@ async function fetch_explanation(){
     console.log(yt_id)
 
     try {
-        const response = await fetch('jakero.pythonanywhere.com/ytexplainer?yt_id=' + yt_id);
+        const response = await fetch('https://jakero.pythonanywhere.com/ytexplainer?yt_id=' + yt_id);
 
         console.log('status code: ', response.status); // 👉️ 200
         
