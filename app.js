@@ -27,9 +27,11 @@ async function fetch_explanation(){
     let yt_id=youtube_parser(url);
 
     console.log(yt_id)
+    
 
     try {
-        const response = await fetch('https://ytexplainer-1-v7805525.deta.app/ytexplainer?yt_id=' + yt_id);
+        const options = {method: 'GET', headers: {'Content-Type': 'application/json'}, body: 'false'};
+        const response = await fetch('https://ytexplainer-1-v7805525.deta.app/ytexplainer?yt_id=' + yt_id, options);
 
         console.log('status code: ', response.status); // 👉️ 200
         
