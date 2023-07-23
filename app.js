@@ -33,7 +33,7 @@ async function fetch_explanation(){
 
         console.log('status code: ', response.status); // 👉️ 200
         
-        if (!response.ok, !response.status == 404) {
+        if (!response.ok, !response.status == 404, !response.status == 409) {
             console.log(response);
             throw new Error(`Error! status: ${response.status}`);
         } else if(response.status == 404){
